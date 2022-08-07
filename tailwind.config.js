@@ -2,7 +2,12 @@
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
-    extend: {},
+    extend: {
+      boxShadow: {
+        shadow_1: '0 5px 10px rgba(0, 0, 0, 0.1)',
+        shadow_2: '0 0 15px 3px rgba(0, 0, 0, 0.1)',
+      },
+    },
     colors: {
       dark_blue: 'hsl(209, 23%, 22%)',
       very_dark_blue: 'hsl(207, 26%, 17%)',
