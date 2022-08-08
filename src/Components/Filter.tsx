@@ -1,16 +1,22 @@
-import React, { MouseEvent, useState } from 'react';
+import React, { useState } from 'react';
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/outline';
 import regions from '../data/dropdown.json';
+import { useAppDispatch } from '../redux/hooks';
+import { sortFilter } from '../redux/filterSlice';
 
 const Filter = () => {
   const [dropdown, setDropdown] = useState(false);
-  const [filter, setFilter] = useState('Filter by the region');
+  const [filter, setFilter] = useState('Sort by the region');
+
+  const dispatch = useAppDispatch();
 
   const selectFilter = (
     e: React.MouseEvent<HTMLHeadingElement>,
-    region: string
+    region: string,
+    key: string
   ) => {
     setFilter(region);
+    dispatch(sortFilter(key));
     setDropdown(false);
   };
   return (
@@ -38,7 +44,7 @@ const Filter = () => {
           <h1
             key={region.id}
             className='cursor-pointer'
-            onClick={(e) => selectFilter(e, region.region)}
+            onClick={(e) => selectFilter(e, region.region, region.key)}
           >
             {region.region}
           </h1>

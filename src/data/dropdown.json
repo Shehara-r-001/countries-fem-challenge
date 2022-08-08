@@ -1,22 +1,27 @@
 [
   {
     "id": 1,
-    "region": "Africa"
+    "region": "Africa",
+    "key": "africa"
   },
   {
     "id": 2,
-    "region": "Americas"
+    "region": "Americas",
+    "key": "ame"
   },
   {
     "id": 3,
-    "region": "Asia"
+    "region": "Asia",
+    "key": "asia"
   },
   {
     "id": 4,
-    "region": "Europe"
+    "region": "Europe",
+    "key": "europe"
   },
   {
     "id": 5,
-    "region": "Oceania"
+    "region": "Oceania",
+    "key": "oce"
   }
 ]
