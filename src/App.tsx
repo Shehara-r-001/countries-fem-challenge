@@ -6,7 +6,6 @@ import Search from './Components/Search';
 function App() {
   return (
     <div className='bg-very_light_gray text-very_dark_blue_2 h-screen w-full overflow-y-scroll overflow-x-hidden'>
-      <Header />
       <main className='pt-[100px] w-[100vw]'>
         <div className='md:flex'>
           <Search />
