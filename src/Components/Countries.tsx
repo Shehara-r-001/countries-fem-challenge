@@ -6,25 +6,24 @@ import { useAppSelector } from '../redux/hooks';
 const Countries = () => {
   const [data, setData] = useState([]);
   const filter = useAppSelector((state) => state.filter.value);
-  console.log(filter);
-
-  const fetchCountries = async () => {
-    if (filter === 'all') {
-      await axios
-        .get(`https://restcountries.com/v3.1/${filter}`)
-        .then((res) => setData(res.data))
-        .catch((error) => console.log(error));
-    } else {
-      await axios
-        .get(`https://restcountries.com/v3.1/region/${filter}`)
-        .then((res) => setData(res.data))
-        .catch((error) => console.log(error));
-    }
-  };
+  // console.log(filter);
 
   useEffect(() => {
+    const fetchCountries = async () => {
+      if (filter === 'all') {
+        await axios
+          .get(`https://restcountries.com/v3.1/${filter}`)
+          .then((res) => setData(res.data))
+          .catch((error) => console.log(error));
+      } else {
+        await axios
+          .get(`https://restcountries.com/v3.1/region/${filter}`)
+          .then((res) => setData(res.data))
+          .catch((error) => console.log(error));
+      }
+    };
+
     fetchCountries();
-    // console.log(data);
   }, [filter]);
 
   return (

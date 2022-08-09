@@ -1,6 +1,7 @@
 type Country = {
   name: {
     common: string;
+    official: string;
   };
   flags: {
     png: string;
@@ -10,6 +11,15 @@ type Country = {
   subregion: string;
   capital: [string];
   tld: [string];
-  currencies: object;
-  languages: object;
+  currencies: {
+    [key: string]: { name: string };
+  };
+  languages: {
+    [key: string]: string;
+  };
+  borders: [string];
+};
+
+type Name = {
+  name: string;
 };

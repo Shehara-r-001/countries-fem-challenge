@@ -7,3 +7,13 @@
     @apply font-Nunito-sans;
   }
 }
+
+@layer components {
+  .attribute {
+    @apply font-semibold tracking-wide;
+  }
+
+  .value {
+    @apply font-normal;
+  }
+}
