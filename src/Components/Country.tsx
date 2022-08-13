@@ -1,14 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useAppSelector } from '../redux/hooks';
 
 type Props = {
   country: Country;
 };
 
 const Country = ({ country }: Props) => {
+  const theme = useAppSelector((state) => state.theme.value);
   return (
     <Link to={`/country/${country.name.common}`}>
-      <div className='mx-[10vw] sm:mx-0 bg-white my-8 rounded-md cursor-pointer'>
+      <div
+        className={`mx-[10vw] sm:mx-0 bg-white my-8 rounded-md cursor-pointer ${
+          !theme && 'bg-dark_blue text-white'
+        }`}
+      >
         <img
           src={country.flags.png}
           alt=''

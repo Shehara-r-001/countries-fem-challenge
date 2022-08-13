@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import CountryMain from '../Components/CountryMain';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import { Pulsar } from '@uiball/loaders';
+import { useAppSelector } from '../redux/hooks';
 
 const DetailPage = () => {
   let { name } = useParams() as any;
@@ -14,6 +16,7 @@ const DetailPage = () => {
   // console.log('path----', path);
 
   const [country, setCountry] = useState<[Country]>();
+  const theme = useAppSelector((state) => state.theme.value);
 
   useEffect(() => {
     const fetchCountry = async () => {
@@ -25,10 +28,22 @@ const DetailPage = () => {
     fetchCountry();
   }, [name]);
 
+  if (!country) {
+    return <Pulsar size={40} speed={1.75} color='black' />;
+  }
+
   return (
-    <div className='pt-[80px] bg-very_light_gray text-very_dark_blue_2 h-screen w-full overflow-y-scroll'>
+    <div
+      className={`pt-[80px] bg-very_light_gray text-very_dark_blue_2 h-screen w-full overflow-y-scroll ${
+        !theme && 'bg-very_dark_blue text-white'
+      }`}
+    >
       <Link to='/'>
-        <button className='flex items-center w-[100px] justify-around bg-white shadow-md rounded-sm ml-[10vw] mt-5 cursor-pointer px-3 text-sm py-1 group'>
+        <button
+          className={`flex items-center w-[100px] justify-around bg-white shadow-md rounded-sm ml-[10vw] mt-5 cursor-pointer px-3 text-sm py-1 group ${
+            !theme && 'bg-dark_blue text-white shadow-shadow_1'
+          }`}
+        >
           <ArrowLeftIcon className='h-4 w-5 group-hover:-translate-x-2 duration-200' />
           <h1>Back</h1>
         </button>
